@@ -3,16 +3,32 @@ server:
   grpc_listen_port: 0
 
 positions:
-  filename: /tmp/positions.yaml
+  filename: /home/ubuntu/promtail/positions.yaml
 
 clients:
-  - url: http://loki:3100/loki/api/v1/push
+  - url: "${LOKI_ADDRESS}/loki/api/v1/push"
 
 scrape_configs:
-- job_name: system
+- job_name: "${SERVER_NAME}_default"
   static_configs:
   - targets:
       - localhost
     labels:
-      job: varlogs
-      __path__: /var/log/*log
+      job: "${SERVER_NAME}_default_log"
+      __path__: /home/ubuntu/backend/logs/production/default/default.log/
+
+- job_name: "${SERVER_NAME}_warn-error"
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: "${SERVER_NAME}_warn-error_log"
+      __path__: /home/ubuntu/backend/logs/production/warn-error/warn-error.log/
+
+- job_name: "${SERVER_NAME}_http"
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: "${SERVER_NAME}_http_log"
+      __path__: /home/ubuntu/backend/logs/production/http/http.log/
