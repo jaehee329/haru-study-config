@@ -1,0 +1,15 @@
+FROM arm64v8/amazoncorretto:17
+
+WORKDIR /app
+
+ARG SERVER_PORT
+
+ENV SERVER_PORT=${SERVER_PORT}
+
+EXPOSE 8080 3000
+
+# COPY ./*.jar ./*.jar
+
+# CMD ["java", "-jar", "-Dspring.profiles.active=production", "-Dserver.port=${SERVER_PORT}", "./*.jar"]
+
+CMD ["tail", "-f", "/dev/null"]
