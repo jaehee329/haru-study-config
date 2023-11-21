@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  amazoncorretto17:
+    build:
+      context: .
+      dockerfile: amazoncorretto17_dockerfile
+      args:
+        SERVER_PORT: ${SERVER_PORT}
+    volumes:
+      - ${OUTER_LOG_DIR}:/app/backend
+      - ${DEPLOY_DIR}:/app/deploy
+    container_name: amazoncorretto17
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    restart: always
+
+  promtail:
+    build:
+      context: .
+      dockerfile: promtail_dockerfile
+      args:
+        LOKI_ADDRESS: ${LOKI_ADDRESS}
+        SERVER_NAME: ${SERVER_NAME}
+    volumes:
+      - ${OUTER_LOG_DIR}:/home/ubuntu/backend
+    container_name: promtail
+    restart: always
