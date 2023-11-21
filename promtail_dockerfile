@@ -1,0 +1,16 @@
+FROM grafana/promtail
+
+WORKDIR /etc/promtail
+
+ARG LOKI_ADDRESS
+ARG SERVER_NAME
+
+ENV LOKI_ADDRESS=${LOKI_ADDRESS}
+ENV SERVER_NAME=${SERVER_NAME}
+
+RUN apt-get update && \
+    apt-get install -y wget && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+    wget https://raw.githubusercontent.com/jaehee329/haru-study-config/main/promtail-config.yaml
+
+CMD ["-config.file", "/etc/promtail/promtail-config.yaml"]
