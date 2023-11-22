@@ -8,8 +8,8 @@ services:
       args:
         SERVER_PORT: ${SERVER_PORT}
     volumes:
-      - ${OUTER_LOG_DIR}:/app/backend
-      - ${DEPLOY_DIR}:/app/deploy
+      - ${OUTER_LOG_DIR}/:/app/backend
+      - ${DEPLOY_DIR}/:/app/deploy
     container_name: amazoncorretto17
     ports:
       - ${SERVER_PORT}:${SERVER_PORT}
@@ -23,6 +23,6 @@ services:
         LOKI_ADDRESS: ${LOKI_ADDRESS}
         SERVER_NAME: ${SERVER_NAME}
     volumes:
-      - ${OUTER_LOG_DIR}:/home/ubuntu/backend
+      - ${OUTER_LOG_DIR}/:/etc/promtail/logs
     container_name: promtail
     restart: always
