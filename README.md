@@ -1,5 +1,5 @@
 # haru-study-config
-초기 ubuntu EC2에서 haru study의 WAS, Promtail을 빠르게 설치하는 가이드
+초기 ubuntu EC2에서 haru study의 WAS, Promtail 컨테이너를 빠르게 설치하는 가이드
 
 ### 1. 초기 설정 파일 다운로드
 새 EC2 인스턴스에 도커 컨테이너를 띄우기 위한 `init.sh`, 환경 변수를 저장할 `.env` 파일을 내려받는다
