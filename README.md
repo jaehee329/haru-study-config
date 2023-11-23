@@ -24,7 +24,8 @@ LOKI 디렉토리 및 포트 번호, 사용할 스프링 profile의 이름 등�
 필요한 설치가 끝나고 docker container가 아래와 같이 두 개 뜨면 성공이다  
 
 `sudo docker ps -a`  
-<img width="741" alt="image" src="https://github.com/jaehee329/haru-study-config/assets/77962265/1793ee47-3721-4818-aaea-7e4a3f822cd8">
+<img width="741" alt="image" src="https://github.com/jaehee329/haru-study-config/assets/77962265/541ab7b9-7a3b-4af1-abfc-8c56adbd7b33">
+
 
 
 ---
